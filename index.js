@@ -1,5 +1,4 @@
 
-let userNumber = document.getElementById("input")
 let outputResult = document.getElementById("output")
 let oneButton = document.getElementById("one")
 let twoButton = document.getElementById("two")
@@ -11,7 +10,8 @@ let sevenButton = document.getElementById("seven")
 let eightButton = document.getElementById("eight")
 let nineButton = document.getElementById("nine")
 let zeroButton = document.getElementById("zero")
-
+let totalButton = document.getElementById("total")
+let clearButton = document.getElementById("clear")
 
 let sumButton = document.getElementById("sum")
 let substractButton = document.getElementById("substract")
@@ -33,48 +33,40 @@ eightButton.addEventListener("click", updateOutput )
 nineButton.addEventListener("click", updateOutput )
 zeroButton.addEventListener("click", updateOutput )
 
+totalButton.addEventListener("click", () => {
+    const lastInput = outputResult.textContent[outputResult.textContent.length - 1];
+    if (  
+      lastInput === "+" ||
+      lastInput === "-" ||
+      lastInput === "*" ||
+      lastInput === "/"
+    ) {
+      return; 
+    }
+    outputResult.textContent = eval(outputResult.textContent)
+})
+clearButton.addEventListener("click", () => {
+    outputResult.textContent = ''
+})
+
 
 function updateOutput(output) {
-    console.log(output.target.value)
-    outputResult.textContent += output.target.value
+
+    const lastInput =
+      outputResult.textContent[outputResult.textContent.length - 1];
+    if (
+        (output.target.value === "+" ||
+        output.target.value === "-" ||
+        output.target.value === "*" ||
+        output.target.value === "/" ) &&(  
+      lastInput === "+" ||
+      lastInput === "-" ||
+      lastInput === "*" ||
+      lastInput === "/")
+    ) {
+      return; 
+    } else {
+        outputResult.textContent += output.target.value
+        console.log(outputResult.textContent)
+    }
 }
-
-
-
-function operate(currentNumber, newNumber, operator) {
-    if (operator === sumButton.textContent) {
-        console.log("sudeda")
-        add(currentNumber, newNumber)
-    } else if (operator === "-") {
-        substract(currentNumber, newNumber)
-    } else if (operator === "*") {
-        multiply(currentNumber, newNumber)
-    } else if (operator === "/"){
-        divide(currentNumber, newNumber)
-    } 
-    return currentNumber
-}
-
-function add(a, b) {
-    outputResult.textContent = `${a} + ${b}`
-    return a + b   
-}
-
-function substract(a, b) {
-    outputResult.textContent = `${a} - ${b}`
-   return a - b
-}
-
-function multiply(a, b) {
-    outputResult.textContent = `${a} * ${b}`
-    return a * b
-}
-
-function divide(a, b) {
-    outputResult.textContent = `${a} / ${b}`
-    return a / b
-}
-
-add(Number(oneButton), Number(twoButton))
-
-
