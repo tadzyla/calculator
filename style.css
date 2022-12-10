@@ -47,7 +47,7 @@ main {
 .calculator {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 3rem;
     width: 480px;
     padding: 2rem;
     border-radius: 14px;
