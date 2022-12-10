@@ -58,8 +58,8 @@ function toggleMode() {
     button.classList.toggle("dark_mode")
   })
 
-  toggleButton.children[0].src.includes("/icons/moon.png") ? 
-    toggleButton.children[0].src = "/icons/sun.png" : 
-    toggleButton.children[0].src = "/icons/moon.png" 
+  toggleButton.children[0].src.includes("icons/moon.png") ? 
+    toggleButton.children[0].src = "icons/sun.png" : 
+    toggleButton.children[0].src = "icons/moon.png" 
 }
  
